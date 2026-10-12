@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input to Array Example</title>
+</head>
+
+<style>
+
+    h1 {
+        text-align: center;
+    }
+
+   
+
+    .container {
+        margin: 100px 200px;
+        border: 1px solid black;
+        background-color: wheat;
+        height: 600px;
+        padding: 50px;
+
+    }
+
+    button {
+      padding: 6px 10px;
+      background-color: lightblue;
+      border: 1px solid darkblue;
+    }
+
+     #elementinput {
+           padding: 6px 10px;
+    }
+
+    input:focus {
+        outline: 3px solid blue;
+    }
+
+    #startIndex {
+            width: 30px;
+            height: 20px;
+            padding: 2px;
+            font-size: 14px;
+    }
+
+    #deleteCount {
+            width: 30px;
+            height: 20px;
+            padding: 2px;
+            font-size: 14px;
+    }
+
+ @media screen and (max-width:600px) {
+
+   .container { 
+       display: flex;
+       flex-direction: column; 
+       max-width: 500px;
+       margin: 0;
+    }
+
+}
+
+
+</style>
+
+<body>
+
+    <h1>ADD AN ELEMENT</h1>
+
+    <div class="container">
+
+  <input id="elementinput" type="text" placeholder="Add an element" />
+  <button onclick="addElement()">Add</button>
+  <button onclick="addFirst()">Add First</button>
+  <button onclick="removeFirst()">Remove First</button>
+  <button onclick="removeLast()">Remove Last</button>
+  <input id ="startIndex" type="number" placeholder="0" />
+  <input id ="deleteCount" type="number" placeholder="0" />
+  <button onclick="arraySplice()">Run Splice</button>
+
+   
+  <h3>Elements:</h3>
+ 
+  <div id="arrayElements"></div> 
+
+  </div> <!-- end of container -->
+
+  <script>
+
+// Array to store elements
+let array = [];
+
+ // Function to add a new film
+
+        function addElement() {
+
+            const elementinput = document.querySelector('#elementinput').value;
+            if (elementinput !== "") {
+                array.push(elementinput);
+                document.querySelector('#elementinput').value = '';
+                displayArray();
+            } else {
+                alert('Please enter an element.');
+            }
+        }
+
+        // Function to add an element to the start
+
+        function addFirst() {
+
+            const elementinput = document.querySelector('#elementinput').value;
+            if (elementinput !== "") {
+                array.unshift(elementinput);
+                document.querySelector('#elementinput').value = '';
+                displayArray();
+            } else {
+                alert('Please enter an element.');
+            }
+        }
+
+
+
+
+        // Function to remove an element from start
+
+         function removeFirst() {
+              array.shift(elementinput);
+              document.querySelector('#elementinput').value = '';
+              displayArray();
+        }
+
+        // Function to remove an element from end 
+
+        function removeLast() {
+              array.pop(elementinput);
+              document.querySelector('#elementinput').value = '';
+              displayArray();
+        }
+
+    
+
+        // Function to splice an element and remove from indexed position
+
+        function arraySplice() {
+              const index = Number(document.getElementById("startIndex").value);
+              const count = Number(document.getElementById("deleteCount").value);
+              const removedItems = array.splice(index, count);
+              displayArray();
+        }
+
+        // Function to display output of elements
+
+        function displayArray() {
+            const list = document.getElementById("arrayElements");
+            list.innerHTML = "";  
+                                                           
+            array.forEach(( element, index) => {
+              
+            const div = document.createElement("div");
+            div.textContent = "Element: " + (index +1) + " " + element;
+          //  div.textContent = `Element ${index + 1}: ${element}`;      // other option using literal 
+            list.appendChild(div);
+            }); 
+         } 
+
+     
+        
+
+  </script>
+
+</body>
+</html>
