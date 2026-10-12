@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API example</title>
+
+    <style>
+
+       body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       }
+
+       h1 {
+        color: #333;
+       }
+
+       form {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       }
+
+       input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 300px;
+        margin-bottom: 10px;
+       }
+
+       button {
+        font-family: "Poppins", sans-serif;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #2f7870;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+       }
+
+       button:hover {
+        background-color: #3fa89c;
+       }
+       
+       #weather-output {
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        width: 80%;
+        max-width: 600px;
+        text-align: center; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+       }
+
+    </style>
+</head>
+<body>
+    <h1>Weather API Example </h1>
+    <form id="weather-form" onsubmit="getWeather(event)">
+        <input type="text" id="location-input" placeholder="Enter a city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+    
+
+    <div id="weather-output">Enter a city name above to get the weather.</div>
+
+
+    <script>
+        async function getWeather(event) {
+            event.preventDefault();
+            const location = document.getElementById('location-input').value.trim();
+            // Replace this with your actual weather API endpoint
+            const apiKey = '79e5489e9a8644bab7172550241406';
+            const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
+        
+            try {
+                const response = await fetch(apiUrl);
+                if(!response.ok) {
+                    throw new Error('Weather data not found');
+                }
+                const data = await response.json();
+                displayWeather(data);
+            } catch (error) {
+                document.getElementById('weather-output').innerText = 'Error fetching weather data.';
+                console.error('Error:', error);
+            }
+        }
+
+        function displayWeather(data) {
+            const {location, current} = data;
+            const weatherOutput = document.getElementById('weather-output');
+            weatherOutput.innerHTML= `
+              <h2>Weather in ${location.name}, ${location.country}</h2>
+              <p>Temperature: ${current.temp_c} degC</p>
+              <p>Condition: ${current.condition.text}</p>
+              <p>Wind Speed: ${current.wind_kph} Km/h</p>
+              `;
+        }
+
+    </script>
+ 
+</body>
+</html>
