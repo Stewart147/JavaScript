@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100px;
+        }
+        button {
+            padding: 8px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            display: block;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Graph Web App</h1>
+    
+    <div class="input-container">
+        <input type="number" id="value1" placeholder="Value 1" value="18">
+        <input type="number" id="value2" placeholder="Value 2" value="34">
+        <input type="number" id="value3" placeholder="Value 3" value="52">
+        <input type="number" id="value4" placeholder="Value 4" value="23">
+        <input type="number" id="value5" placeholder="Value 5" value="78">
+        <button onclick="plotFromInputs()">Plot Graph</button>
+    </div>
+    
+    <canvas id="graphCanvas" width="800" height="400"></canvas>
+
+    <script>
+        function plotFromInputs() {
+            // Get values from input fields
+            let values = [
+                parseInt(document.getElementById("value1").value) || 0,
+                parseInt(document.getElementById("value2").value) || 0,
+                parseInt(document.getElementById("value3").value) || 0,
+                parseInt(document.getElementById("value4").value) || 0,
+                parseInt(document.getElementById("value5").value) || 0
+            ];
+            
+            plotGraph(values);
+        }
+
+        function plotGraph(values) {
+            let canvas = document.getElementById("graphCanvas");
+            let ctx = canvas.getContext("2d");
+            let width = canvas.width;
+            let height = canvas.height;
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw x-axis
+            ctx.beginPath();
+            ctx.moveTo(0, height / 2);
+            ctx.lineTo(width, height / 2);
+            ctx.stroke();
+
+            // Draw y-axis
+            ctx.beginPath();
+            ctx.moveTo(width / 2, 0);
+            ctx.lineTo(width / 2, height);
+            ctx.stroke();
+
+            // Plot values on graph
+            let step = width / (values.length + 1);
+            let x = step;
+            
+            values.forEach(function(value, index) {
+                // Calculate y position (inverted because canvas y increases downward)
+                let y = height / 2 - (value / 100) * (height / 2);
+                
+                // Draw dot
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                x += step;
+            });
+        }
+
+        // Plot initial graph on page load
+        window.addEventListener("load", function() {
+            plotFromInputs();
+        });
+    </script>
+</body>
+</html>
