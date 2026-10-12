@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>dark to light mode</title> 
+<!--  <link rel="stylesheet" href="style3.css"/> -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/8a10e0f309.js" crossorigin="anonymous"></script>
+
+  <style>
+
+     * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+     body {
+       background-color: #ffffff;
+        font-family: "Montserrat", sans-serif;
+        height: 100vh;
+        width: 100vw;
+     }
+
+    header {
+           display: flex;
+             background-color: #f1f1f1;
+             padding: 10px;    
+            } 
+
+    .logo {
+        color: black;
+        font-weight: bold;
+        font-size: 25px;
+        font-family: roboto, sans-serif;
+        margin-left: 20px;
+        margin: 20px; 
+   }
+
+   .btn {
+    height: 60px;
+    width: 70px;
+    padding: 6px;
+    margin: 10px;
+}
+
+   
+
+    /*  Navigation Styles   */
+
+.navTop {
+    width: 100%;
+    padding: 10px 0px;
+    background-color: lightgrey;
+    color: black;
+}
+
+.navTop ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.navTop li {
+    margin: 15px;
+    background-color: orange;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navTop a {
+    font-family: "Montserrat" sans-serif;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s, border-bottom 0.3;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.navTop a:hover {
+    color: white;
+    border-bottom: 2px solid #e6e6e6;
+
+}
+
+/* main section styles */
+
+section {
+    height: auto;
+    width: 800px;
+    border: 1px solid blue;
+    margin: 40px auto;
+    padding: 30px;
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    color: #1b1b20;
+    padding-bottom: 40px;
+}
+
+h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    color: #a7a1a1;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #e6e6e6;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.intro {
+  background-color: #e6e6e6;
+  border: 1px solid red;
+  color: black;
+  padding: 20px;
+  margin: 20px 0;
+
+}
+
+
+
+/* Footer Section Styles  */
+
+footer {
+    background-color: lightgrey;
+    padding: 40px 0;
+    color: black;
+}
+
+.footer-content {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.links a {
+    color: darkslategrey;
+    text-decoration: none;
+    transform: color 0.3s;
+}
+
+.links a:hover {
+    color: blue;
+    text-decoration: none;
+    transform: color 0.3s;
+}
+
+.social {
+    margin-top: 0;
+}
+
+.social a {
+    color:darkslategrey;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social a:hover {
+    color: blue;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+header.dark-mode {
+    background-color: #444444;
+}
+
+.logo.dark-mode {
+    color: white;
+}
+
+button.dark-mode {
+    background-color: #555555;
+    color: #ffffff;
+}
+
+.navTop.dark-mode {
+    background-color: #333333;
+}
+
+.navTop.dark-mode li {
+    background-color: yellow;
+    margin: 0 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navTop.dark-mode a {
+    background-color: white;
+    padding-bottom: 5px;
+}
+
+.navTop.dark-mode a:hover {
+    background-color: orange;
+}
+
+h1.dark-mode {
+    color: #f1f1f1;
+}
+ 
+ 
+.intro.dark-mode {
+    background-color: #333333;
+    color: white;
+    border: 2px solid cyan;
+}
+
+footer.dark-mode {
+    background-color: #1b1b20;
+    padding: 40px 0;
+    color: #e6e6e6;
+}
+
+.links.dark-mode a {
+    color: white;
+    text-decoration: none;
+    transform: color 0.3s;
+}
+
+.links.dark-mode a:hover {
+    color: yellow;
+    text-decoration: none;
+    transform: color 0.3s;
+}
+
+.social a.dark-mode {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social.dark-mode a:hover {
+    color: yellow;
+}
+
+/* resizing for mobile devices */
+
+    @media screen and (max-width:600px) {
+
+           .container { 
+              display: flex;
+              flex-direction: column;
+              max-width: 500px;
+            }
+
+            .navTop a {
+                font-size: 12px;
+            } 
+
+           
+
+            header, .navTop, footer {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              justify-items: center;
+            }
+
+            section {
+                max-width: 400px;
+                margin: 10px 10px;
+            }
+
+          }
+
+  </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+    <header>
+    
+    <div class="logo">GAME NEWS</div>
+     <button id="toggleButton" class="btn">Mode</button>
+
+  <!--  using nav tag and ul and li elements to style in CSS -->
+
+<nav class="navTop">
+  <ul>
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="games.html">GAMES</a></li>
+    <li><a href="events.html">EVENTS</a></li>
+    <li><a href="about.html">ABOUT</a></li>  
+    <li><a href="contact.html">CONTACT</a></li> 
+</nav>
+
+</header>
+
+<section>
+
+  
+  <h1>Welcome to Game News Webpage</h1>
+
+  <article>
+  <h2>TETRIS</h2>
+  <p class="intro">
+      Tetris is one of the simplest yet most addictive puzzle games ever created. The player must rotate and 
+        position falling geometric shapes called Tetrominoes to form complete horizontal lines. Completed lines
+        disappear, freeing up space and gradually increasing the game’s speed. 
+        What makes Tetris brilliant is its elegant balance:
+        Simple rules (fit pieces into place)
+        Complex outcomes (spatial reasoning, timing, and anticipation)
+        Endless replayability, as the game progressively becomes faster and more demanding.
+    </p>
+    </article>
+
+    <article>
+    <h2>FOOTBALL MANAGER 2026</h2>
+    <p class="intro">
+        The core management loop remains strong: taking charge of a club, organising the squad, handling tactics and
+        transfers still delivers plenty of satisfaction. Many reviewers note that the “magic” moments of turning around
+        a club or pulling off a big deal remain intact. Technical overhaul: FM 26 uses the Unity engine (a noted step change)
+        which allows for upgraded visuals — better stadium lighting, more realistic 3D presentations, dynamic weather effects in matches. 
+        Replayability remains very high: For fans of the simulation genre, there’s still a deep sandbox aspect. If you enjoy the
+        long-term strategic play, the game provides that. Some reviewers believe this is a “foundation” title that sets
+        up future iterations, with promise of deeper systems under the hood.
+    </p>
+    </article>
+
+    <article>
+    <h2>CALL OF DUTY</h2>
+    <p class="intro">
+        The core gunplay remains very solid. Reviewers say the shooting feels great, with strong responsiveness and satisfying feedback. 
+        Multiplayer remains the main attraction. According to Tom’s Guide:“Its excellent multiplayer suite is the biggest draw…” 
+        The Zombies mode also gets praise. The Tech Vortex notes a “nostalgic return with depth”, merging past CoD Zombies
+        elements and adding new ones. Technical performance: Good across modern platforms, with accessibility features.
+        For players who value smooth FPS and decent visuals, this is a plus.
+    </p>
+    </article>
+
+    <article>
+    <h2>WARCRAFT III: REIGN OF CHAOS</h2>
+    <p class="intro">
+         “Warcraft III: Reign of Chaos” is a real-time strategy (RTS) game developed by Blizzard Entertainment,
+         released in 2002. It’s the third major title in the Warcraft universe, featuring four playable factions
+        (Humans, Orcs, Undead, Night Elves), a strong campaign narrative, hero-units, base-building, unit management and multiplayer. 
+        What works / strong points
+        The game was very highly regarded on release: on Metacritic it scores 92/100 indicating “universal acclaim”. 
+        Story and characters stand out: memorable moments with characters like Arthas Menethil, Thrall, Illidan Stormrage.
+        The narrative is more cinematic than many RTS games of its time.Deep and engaging gameplay: hero units
+        (which gain experience) add an RPG-flavour to the RTS genre; each faction plays differently, campaigns are varied.
+    </p>
+    </article>
+
+    <article>
+    <h2>GRAND THEFT AUTO V</h2>
+    <p class="intro">
+       What works very well
+       The game received universal acclaim from critics. On Metacritic, it holds a score of 97/100 for many platforms. 
+       The open-world design is massive and immersive: you explore the fictional city of Los Santos and its surrounding 
+       areas, with lots of detail, atmosphere and things to do. Character and narrative structure: The game allows you
+       to play as three protagonists (Michael, Franklin, Trevor) which is relatively unusual and adds variety to story and gameplay. 
+       Mission design & variety: Heists, driving, shooting, exploring, side-activities — the gameplay mix is strong. 
+       Many reviewers point out how GTA V raises the bar for open-world games. Longevity & online component: The inclusion
+       of Grand Theft Auto Online gives the game extended life beyond the single‐player campaign. Also, the richness
+       of the world means replay value is high. User reviews reflect long-term enjoyment.
+    </p>
+    </article>
+
+</section>
+
+
+  <!-- This is the Footer Section  -->
+
+  <footer>
+
+    <div class="footer-content">
+
+        <p>&copy; 2025 GAME NEWS unlimited. All rights reserved.</p>
+
+        <ul class="links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+       <div class="social">
+         <a href="https:www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+         <a href="https:www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+         <a href="https:www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
+       </div>
+
+    </div>
+
+  </footer> 
+
+  </div> <!-- end of container -->
+
+  <script>
+
+     // Select the toggle button
+ 
+    const toggleButton = document.getElementById('toggleButton');
+
+    // Function to switch between light and dark modes
+
+    function toggleMode() {
+    const body = document.body;
+    const header = document.querySelector('header');
+    const logo = document.querySelector('.logo');
+    const navs = document.querySelectorAll('.navTop');
+    const h1 = document.querySelector('h1');
+    const intros = document.querySelectorAll('.intro')
+    const footer = document.querySelector('footer');
+    const links = document.querySelector('.links');
+    const social = document.querySelector('.social');
+
+
+     // Toggle the dark mode class on body and header
+    body.classList.toggle('dark-mode');
+    header.classList.toggle('dark-mode');
+    logo.classList.toggle('dark-mode');
+    h1.classList.toggle('dark-mode');
+   // navs.classList.toggle('dark-mode');
+    //intro.classList.toggle('dark-mode');
+    footer.classList.toggle('dark-mode');
+    toggleButton.classList.toggle('dark-mode');
+   // links.classList.toggle('dark-mode');
+   // social.classList.toggle('dark-mode');
+
+      // Loop through all intro paragraphs
+
+    intros.forEach(intro => {
+        intro.classList.toggle('dark-mode');
+
+    });
+
+     navs.forEach(nav => {
+        nav.classList.toggle('dark-mode');
+
+    });
+
+   
+
+    // Toggle links and social
+    if (links) links.classList.toggle('dark-mode');
+    if (social) social.classList.toggle('dark-mode');
+
+ 
+
+     // Update button text
+    if (body.classList.contains('dark-mode')) {
+        toggleButton.textContent = 'Light Mode';   
+    } else {
+        toggleButton.textContent = 'Dark Mode';  
+    }
+}
+
+
+// Add event listener to the toggle button
+toggleButton.addEventListener('click', toggleMode);
+
+
+
+  </script>
+
+  
+
+
+ 
+
+
+  
+
+</body>
+
+</html>
